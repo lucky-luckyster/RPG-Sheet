@@ -1,0 +1,92 @@
+@media screen and (min-width:320px) and (max-width:640px) {
+  /* for screens that are at least 320 pixels wide but less than or equal to 640 pixels wide */
+}
+
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+  
+}
+
+label{
+  display: inline-block;
+  clear: left;
+  width: 250px;
+  text-align: center;
+}
+
+.charsheet {
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  height: 100%;
+  border: 1px solid black;
+  -webkit-box-shadow: 0px 0px 0px 10px rgb(26, 91, 102), inset 0px 10px 47px -8px #141414, inset 0px -10px 27px -8px rgb(14, 29, 51), inset 15px 7px 43px 6px rgba(34, 87, 117, 0.171); 
+  box-shadow: 0px 0px 0px 10px rgb(26, 91, 102), inset 0px 10px 47px -8px #141414, inset 0px -10px 27px -8px rgb(14, 29, 51), inset 15px 7px 43px 6px rgba(34, 87, 117, 0.171);
+}
+
+form.charsheet {
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  
+}
+
+* {
+  padding: 0;
+}
+
+
+ul li {
+  list-style: none;
+  line-height: 140%;
+  
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  
+    }
+
+ul {
+  margin: 0;
+  padding: 0;
+
+}
+
+.charsheet ::placeholder {
+  color: rgba(31, 76, 94, 0.712);
+  
+}
+
+.charsheet label {
+  text-transform: uppercase;
+  font-size: 12px;
+  box-shadow: 0px 0px 1.3px 2px rgb(13, 67, 77)
+  
+}
+.charsheet main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 20%;
+  
+}
+.charsheet header {
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 23%;
+  
+}
+
+.charsheet label {
+  margin-left: -10%;
+  
+}
+

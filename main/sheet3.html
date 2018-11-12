@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <form class="charsheet">
+        <header>
+            <br>
+            <section class="nome">
+                <label for="nome">Nome do Personagem</label>
+                <input name="nome" placeholder="Ricardo coração de leitão" />
+            </section>
+            <section class="outros">
+                <ul>
+                    <li>
+                        <label for="classenivel">Classe e nível</label>
+                        <input id="classenivel" name="classenivel" placeholder="Clérigo 3" />
+                    </li>
+                    <li>
+                        <label for="historia">Historia</label>
+                        <input id="historia" name="historia" placeholder="Sábio" />
+                    </li>
+                    <li>
+                        <label for="jogador">Nome do jogador</label>
+                        <input id="jogador" name="jogador" placeholder="Jair Haddad">
+                    </li>
+                    <li>
+                        <label for="raca">Raça</label>
+                        <input id="raca" name="raca" placeholder="Gnomo" />
+                    </li>
+                    <li>
+                        <label for="alinhamento">Alinhamento</label>
+                        <input id="alinhamento" name="alinhamento" placeholder="Leal e Mal" />
+                    </li>
+                    <li>
+                        <label for="experiencia">Experiencia</label>
+                        <input id="expreiencia" name="experiencia" placeholder="1713" type="number" />
+                    </li>
+                </ul>
+            </section>
+            <ul>
+                    <li class="hp">
+                            <div class="regular">
+                                <div class="max">
+                                    <br>
+                                    <label for="hp">HP Atual</label>
+                                    <input id="hpatual" name="hpatual" placeholder="10" type="number" />
+                                    <br>
+                                    <label for="hp">HP Máximo</label>
+                                    <input id="hpmaximo" name="hpmaximo" placeholder="10" type="number" />    
+                                </div>
+                            </div>
+                        </li>
+                        <br>
+                <section class="combate">
+                    <li class="classearmadura">
+                        <div>
+                            <label for="ac">Classe de Armadura</label>
+                            <input id="ac" name="ac" placeholder="10" type="number" />
+                        </div>
+                    </li>
+                    <li class="iniciativa">
+                        <div>
+                            <label for="iniciativa">Iniciativa</label>
+                            <input id="iniciativa" name="iniciativa" placeholder="+0" type="number" />
+                        </div>
+                    </li>
+                    <li class="velocidade">
+                        <div>
+                            <label for="velocidade">Velocidade</label>
+                            <input id="velocidade" name="velocidade" placeholder="30" type="number" />
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </header>
+        <main>
+            <section>
+                <section class="atributos">
+                    <div class="valores">
+                        <ul>
+                            <li>
+                                <div class="valores">
+                                    <label for="valorforca">Força</label>
+                                    <input id="valorforca" name="valorforca" placeholder="10" type="number" />
+                                </div>
+    
+                            </li>
+                            <li>
+                                <div class="valores">
+                                    <label for="valordestreza">Destreza</label>
+                                    <input id="valordestreza" name="valordestreza" placeholder="10" type="number" />
+                                </div>
+    
+                            </li>
+                            <li>
+                                <div class="valores">
+                                    <label for="valorconstituicao">Constituicao</label>
+                                    <input id="valorconstituicao" name="valorconstituicao" placeholder="10" type="number" />
+                                </div>
+    
+                            </li>
+                            <li>
+                                <div class="valores">
+                                    <label for="valorsabedoria">Sabedoria</label>
+                                    <input id="valorsabedoria" name="valorsabedoria" placeholder="10"  type="number"/>
+                                </div>
+    
+                            </li>
+                            <li>
+                                <div class="valores">
+                                    <label for="valorinteligencia">Inteligencia</label>
+                                    <input id="valorinteligencia" name="valorinteligencia" placeholder="10" type="number" />
+                                </div>
+    
+                            </li>
+                            <li>
+                                <div class="valores">
+                                    <label for="valorcarisma">Carisma</label>
+                                    <input id="valorcarisma" name="valorcarisma" placeholder="10" type="number" />
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <br>
+                    <div class="aplicacoes-atrib">
+                        <div class="habilidades">
+                            <ul>
+                                <li>
+                                    <label for="acrobacia">Acrobacia
+                                        <span class="habilidade">(Des)</span>
+                                    </label>
+                                    <input id="acrobacia" name="acrobacia" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="arcana">Arcana
+                                        <span class="habilidade">(Int)</span>
+                                    </label>
+                                    <input id="arcana" name="arcana" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="atletismo">Atletismo
+                                        <span class="habilidade">(For)</span>
+                                    </label>
+                                    <input id="atletismo" name="atletismo" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="enganacao">Enganação
+                                        <span class="habilidade">(Car)</span>
+                                    </label>
+                                    <input id="enganacao" name="enganacao" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="intimidacao">Intimidação
+                                        <span class="habilidade">(Car)</span>
+                                    </label>
+                                    <input id="intimidacao" name="intimidacao" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="medicina">Medicina
+                                        <span class="habilidade">(Sab)</span>
+                                    </label>
+                                    <input id="medicina" name="medicina" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="percepcao">Percepção
+                                        <span class="habilidade">(Sab)</span>
+                                    </label>
+                                    <input id="percepcao" name="percepcao" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="persuasao">Persuasão
+                                        <span class="habilidade">(Car)</span>
+                                    </label>
+                                    <input id="persuasao" name="persuasao" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="furtividade">Furtividade
+                                        <span class="habilidade">(Des)</span>
+                                    </label>
+                                    <input id="furtividade" name="furtividade" placeholder="+0" type="number" />
+                                </li>
+                                <li>
+                                    <label for="sobrevivencia">Sobrevivência
+                                        <span class="habilidade">(Sab)</span>
+                                    </label>
+                                    <input id="sobrevivencia" name="sobrevivencia" placeholder="+0" type="number" />
+                                </li>
+                                <br>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </form>
+</body>
+</html>
