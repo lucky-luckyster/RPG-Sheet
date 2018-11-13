@@ -1,26 +1,13 @@
+//1. Inicialização
+
 var localDB = null;
 
-function deleteAllRPG() {
-    var query = "DROP TABLE rpgtable;";
-
+function deleteAll() {
+    var query = 'DROP TABLE IF EXISTS rpgtable;';
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
             updateStatus("Tabela 'rpgtable' status: OK.");
-        });
-    } catch (e) {
-        updateStatus("Erro ao deletar " + e + ".");
-        return;
-    }
-}
-
-function deleteAllVito() {
-    var query = "DROP TABLE vilourenco;";
-
-    try {
-        localDB.transaction(function (transaction) {
-            transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            updateStatus("Tabela 'vilo' status: OK.");
         });
     } catch (e) {
         updateStatus("Erro ao deletar " + e + ".");
@@ -59,39 +46,44 @@ function initDB() {
 }
 
 function createTables() {
-    var query = 'CREATE TABLE IF NOT EXISTS rpgsheet(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR, classenivel VARCHAR, valorforca INTEGER, valordestreza INTEGER, valorconstituicao INTEGER, valorsabedoria INTEGER, valorinteligencia INTEGER, valorcarisma INTEGER);';
-
+    var query = 'CREATE TABLE IF NOT EXISTS rpgtable(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nome VARCHAR NOT NULL, classe VARCHAR NOT NULL, valorforca INTEGER, valordestreza INTEGER, valorconstituicao INTEGER, valorsabedoria INTEGER, valorinteligencia INTEGER, valorcarisma INTEGER);';
     try {
         localDB.transaction(function (transaction) {
             transaction.executeSql(query, [], nullDataHandler, errorHandler);
-            updateStatus("Tabela 'rpgsheet' status: OK.");
+            updateStatus("Tabela 'rpgtable' status: OK.");
         });
     }
     catch (e) {
-        updateStatus("Erro: Data base 'rpgsheet' não criada " + e + ".");
+        updateStatus("Erro: Data base 'rpgtable' não criada " + e + ".");
         return;
     }
 }
 
+
+
+
+//2. Query e visualização de Update
+
+
 function onUpdate() {
     var id = document.itemForm.id.value;
     var nome = document.itemForm.nome.value;
-    var classenivel = document.itemForm.classenivel.value;
+    var classe = document.itemForm.classe.value;
     var valorforca = document.itemForm.valorforca.value;
     var valordestreza = document.itemForm.valordestreza.value;
     var valorconstituicao = document.itemForm.valorconstituicao.value;
-    var valorinteligencia = document.itemForm.valorinteligencia.value;
     var valorsabedoria = document.itemForm.valorsabedoria.value;
+    var valorinteligencia = document.itemForm.valorinteligencia.value;
     var valorcarisma = document.itemForm.valorcarisma.value;
-
-    if (nome == "") {
-        updateStatus("'Nome' é um campo obrigatório!");
+    if (nome == "" || classe == "") {
+        updateStatus("'Nome' e 'classe' são campos obrigatórios!");
     }
     else {
-        var query = "update rpgsheet set nome=? where id=?;";
+        var valorconstituicao = document.itemForm.valorconstituicao.value;
+        var query = "update rpgtable set nome=?, classe=?, valorforca=?, valordestreza=?, valorconstituicao=?, valorsabedoria=?, valorinteligencia=?, valorcarisma=? where id=?;";
         try {
             localDB.transaction(function (transaction) {
-                transaction.executeSql(query, [id, nome, classenivel, valorforca, valordestreza, valorconstituicao, valorinteligencia, valorsabedoria, valorcarisma], function (transaction, results) {
+                transaction.executeSql(query, [nome, classe, valorforca, valordestreza, valorconstituicao, valorsabedoria, valorinteligencia, valorcarisma, id], function (transaction, results) {
                     if (!results.rowsAffected) {
                         updateStatus("Erro: Update não realizado.");
                     }
@@ -112,7 +104,7 @@ function onUpdate() {
 function onDelete() {
     var id = document.itemForm.id.value;
 
-    var query = "delete from rpgsheet where id=?;";
+    var query = "delete from rpgtable where id=?;";
     try {
         localDB.transaction(function (transaction) {
 
@@ -135,15 +127,23 @@ function onDelete() {
 }
 
 function onCreate() {
+    var id = document.itemForm.id.value;
     var nome = document.itemForm.nome.value;
-    if (nome == "") {
-        updateStatus("Erro: 'Nome' é um campo obrigatório!");
+    var classe = document.itemForm.classe.value;
+    var valorforca = document.itemForm.valorforca.value;
+    var valordestreza = document.itemForm.valordestreza.value;
+    var valorconstituicao = document.itemForm.valorconstituicao.value;
+    var valorsabedoria = document.itemForm.valorsabedoria.value;
+    var valorinteligencia = document.itemForm.valorinteligencia.value;
+    var valorcarisma = document.itemForm.valorcarisma.value;
+    if (nome == "" || classe == "") {
+        updateStatus("Erro: 'Nome' e 'classe' são campos obrigatórios!");
     }
     else {
-        var query = "insert into rpgsheet (id, nome, classenivel, valorforca, valordestreza, valorconstituicao, valorinteligencia, valorsabedoria, valorcarisma) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        var query = "insert into rpgtable (nome, classe, valorforca, valordestreza, valorconstituicao, valorsabedoria, valorinteligencia, valorcarisma) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
         try {
             localDB.transaction(function (transaction) {
-                transaction.executeSql(query, [id, nome, classenivel, valorforca, valordestreza, valorconstituicao, valorinteligencia, valorsabedoria, valorcarisma], function (transaction, results) {
+                transaction.executeSql(query, [nome, classe, valorforca, valordestreza, valorconstituicao, valorsabedoria, valorinteligencia, valorcarisma], function (transaction, results) {
                     if (!results.rowsAffected) {
                         updateStatus("Erro: Inserção não realizada");
                     }
@@ -164,7 +164,7 @@ function onCreate() {
 function onSelect(htmlLIElement) {
     var id = htmlLIElement.getAttribute("id");
 
-    query = "SELECT * FROM rpgsheet where id=?;";
+    query = "SELECT * FROM rpgtable where id=?;";
     try {
         localDB.transaction(function (transaction) {
 
@@ -172,7 +172,7 @@ function onSelect(htmlLIElement) {
 
                 var row = results.rows.item(0);
 
-                updateForm(row['id'], row['nome'], row['classenivel'], row['valorforca'], row['valordestreza'], row['valorconstituicao'], row['valorsabedoria'], row['valorinteligencia'], row['valorcarisma']);
+                updateForm(row['id'], row['nome'], row['classe'], row['valorforca'], row['valordestreza'], row['valorconstituicao'], row['valorsabedoria'], row['valorinteligencia'], row['valorcarisma']);
 
             }, function (transaction, error) {
                 updateStatus("Erro: " + error.code + "<br>Mensagem: " + error.message);
@@ -196,7 +196,7 @@ function queryAndUpdateOverview() {
     };
 
     //Realiza a leitura no banco e cria novas linhas na tabela.
-    var query = "SELECT * FROM rpgsheet;";
+    var query = "SELECT * FROM rpgtable;";
     try {
         localDB.transaction(function (transaction) {
 
@@ -209,7 +209,7 @@ function queryAndUpdateOverview() {
                     li.setAttribute("class", "data");
                     li.setAttribute("onclick", "onSelect(this)");
 
-                    var liText = document.createTextNode(row['nome'] + " x " + row['classe']);
+                    var liText = document.createTextNode(row['nome'] + " x " + row['classe'] + " x " + row['valorforca']+ " x " + row['valordestreza']+ " x " + row['valorconstituicao']+ " x " + row['valorsabedoria']+ " x " + row['valorinteligencia'] + " x " + row['valorcarisma']);
                     li.appendChild(liText);
 
                     document.getElementById("itemData").appendChild(li);
@@ -238,16 +238,16 @@ nullDataHandler = function (transaction, results) {
 
 // Funções de update
 
-function updateForm(id, nome, classenivel, valorforca, valordestreza, valorconstituicao, valorinteligencia, valorsabedoria, valorcarisma) {
-    document.itemForm.id.value = id;
-    vdocument.itemForm.nome.value = nome;
-    document.itemForm.classenivel.value = classenivel;
-    document.itemForm.valorforca.value = valorforca;
-    document.itemForm.valordestreza.value = valordestreza;
-    document.itemForm.valorconstituicao.value = valorconstituicao;
-    document.itemForm.valorinteligencia.value = valorinteligencia;
-    document.itemForm.valorsabedoria.value = valorsabedoria;
-    document.itemForm.valorcarisma.value = valorcarisma;
+function updateForm(id, nome, classe, valorforca, valordestreza, valorconstituicao, valorsabedoria, valorinteligencia, valorcarisma) {
+    var id = document.itemForm.id.value;
+    var nome = document.itemForm.nome.value;
+    var classe = document.itemForm.classe.value;
+    var valorforca = document.itemForm.valorforca.value;
+    var valordestreza = document.itemForm.valordestreza.value;
+    var valorconstituicao = document.itemForm.valorconstituicao.value;
+    var valorsabedoria = document.itemForm.valorsabedoria.value;
+    var valorinteligencia = document.itemForm.valorinteligencia.value;
+    var valorcarisma = document.itemForm.valorcarisma.value;
 }
 
 function updateStatus(status) {

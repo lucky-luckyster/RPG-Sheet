@@ -1,39 +1,35 @@
-<!DOCTYPE html>
-<html lang="br" manifest="offlinedatabase.manifest">
+<!DOCTYPE HTML>
+<html manifest="offlinedatabase.manifest">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>RPG - Ficha</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=480; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <title>Offline HTML5 SQLite</title>
     <script type="text/javascript" src="offlinedatabaseJS.js"></script>
+    <link rel="stylesheet" href="stylesheet.css">
+    <style>
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 11px;
+        }
+    </style>
+
+
 </head>
 
 <body onload="onInit()">
-    <form class="charsheet">
-
-        <ul id="itemData" style="cursor:pointer;">
-        </ul>
+    <h3>Dados:</h3>
+    <ul  id="itemData" style="cursor:pointer;">
+    </ul>
+    <h3>Detalhes:</h3>
+    <form name="itemForm">
+        <label for="id">Id:</label>
+        <input type="text" name="id" id="id" size=2 disabled="true" />
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" size=10/>
+        <label for="classe">classe</label>
+        <input type="text" name="classe" id="classe" size=3 />
         <br>
-        <header>
-            <br>
-            <section class="nome">
-                <label for="nome">Nome do Personagem</label>
-                <input name="nome" id="nome" placeholder="Ricardo coração de leitão" />
-            </section>
-            <section class="outros">
-                <ul>
-                    <li>
-                        <label for="classenivel">Classe e nível</label>
-                        <input id="classenivel" name="classenivel" placeholder="Clérigo 3" />
-                    </li>
-                    <li>
-                        <label for="id">Id</label>
-                        <input type="text" name="id" id="id" size=2 disabled="true" />
-                    </li>
-                </ul>
-        </header>
         <main>
             <section>
                 <section class="atributos">
@@ -46,7 +42,7 @@
                                 </div>
 
                             </li>
-                            <li>
+                            <li>    
                                 <div class="valores">
                                     <label for="valordestreza">Destreza</label>
                                     <input id="valordestreza" name="valordestreza" placeholder="10" type="number" />
@@ -91,12 +87,11 @@
                 </section>
             </section>
         </main>
-    </form>
-    <input type="button" name="create" value="Create" onclick="onCreate()" />
-    <input type="button" name="update" value="Update" onclick="onUpdate()" />
-    <input type="button" name="delete" value="Delete" onclick="onDelete()" />
-    <input type="button" name="deletar-rpg" value="deletar-table" onclick="deleteAllRPG()" />
-    <input type="button" name="deletar-vito" value="deletar-table" onclick="deleteAllVito()" />
+        <br>
+        <input type="button" name="create" value="Create" onclick="onCreate()" />
+        <input type="button" name="delete" value="delete" onclick="deleteAll()" />
+        <input type="button" name="update" value="Update" onclick="onUpdate()" />
+        <input type="button" name="delete" value="Delete" onclick="onDelete()" />
     </form>
     <h4>Status:</h4>
     <div id="status"></div>

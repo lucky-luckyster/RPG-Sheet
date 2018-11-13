@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="br" manifest="offlinedatabase.manifest">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>RPG - Ficha</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="offlinedatabaseJS.js"></script>
+</head>
+
+<body onload="onInit()">
+    <form class="charsheet">
+
+        <ul id="itemData" style="cursor:pointer;">
+        </ul>
+        <br>
+        <header>
+            <br>
+
+                <label for="nome">Nome do Personagem</label>
+                <input name="nome" id="nome" placeholder="Ricardo coração de leitão" />
+            <br>
+                <label for="classenivel">Classe e nível</label>
+                <input id="classenivel" name="classenivel" placeholder="Clérigo 3" />
+            <br>
+    </form>
+    <input type="button" name="create" value="Create" onclick="onCreate()" />
+    <input type="button" name="update" value="Update" onclick="onUpdate()" />
+    <input type="button" name="delete" value="Delete" onclick="onDelete()" />
+    </form>
+    <h4>Status:</h4>
+    <div id="status"></div>
+</body>
+
+</html>
